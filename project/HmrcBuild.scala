@@ -1,15 +1,15 @@
 import sbt.Keys._
 import sbt._
 import uk.gov.hmrc.SbtAutoBuildPlugin
+import uk.gov.hmrc.sbtdistributables.SbtDistributablesPlugin
 import uk.gov.hmrc.versioning.SbtGitVersioning
-
 
 object HmrcBuild extends Build {
 
   val appName = "order-id-encoder"
 
   lazy val microservice = Project(appName, file("."))
-    .enablePlugins(Seq(play.sbt.PlayScala,SbtAutoBuildPlugin,SbtGitVersioning) : _*)
+    .enablePlugins(Seq(play.sbt.PlayScala,SbtAutoBuildPlugin, SbtDistributablesPlugin, SbtGitVersioning) : _*)
     .settings(
       scalaVersion := "2.11.11",
       libraryDependencies ++= AppDependencies(),
